@@ -4,7 +4,7 @@ permalink: /data-wrangling/
 title: "System administration"
 author_profile: true
 header:
-  image: "/images/fort point.png"
+  image: "/images/dc.jpg"
 ---
 
 
