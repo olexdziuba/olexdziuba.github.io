@@ -34,7 +34,7 @@ Configuration réseau:
 
  (pas modifier les lignes contenant localhost )
 
-![](images/image10.png)
+![](images/samba_centos7/image10.png)
 
 
 
