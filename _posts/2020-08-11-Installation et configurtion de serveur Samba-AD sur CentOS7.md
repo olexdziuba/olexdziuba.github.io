@@ -49,7 +49,7 @@ eth0 (ens32 pour vmware) - DHCP pour avoir acces internet
 
 `/etc/sysconfig/network-scripts`
 
-![](images/image8.png)
+![](images/samba_centos7/image8.png)
 
 eth1 (ens33 pour vmware) static
 
@@ -57,7 +57,7 @@ eth1 (ens33 pour vmware) static
 
 `/etc/sysconfig/network-scripts`
 
-![](images/image12.png)
+![](images/samba_centos7/image12.png)
 
 Pas proxy!
 
@@ -82,7 +82,7 @@ Faite `reboot`.
 
  `sestatus`
 
-![](images/image9.png)
+![](images/samba_centos7/image9.png)
 
 Activer le mode routeur et le NAT 
 ---------------------------------
@@ -97,7 +97,7 @@ Pour faire changement permanent il faut ajouter dans file:
 
 `net.ipv4.ip\_forward = 1into file`
 
-![](images/image3.png)
+![](images/samba_centos7/image3.png)
 
 pour appliquer changement:
 
