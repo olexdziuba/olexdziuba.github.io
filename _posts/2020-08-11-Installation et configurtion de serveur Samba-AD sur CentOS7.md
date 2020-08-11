@@ -74,7 +74,7 @@ Vérifier que SELinux est désactivé :
 
 `selinux=disabled`
 
-![](images/image16.png)
+![](images/samba_centos7/image16.png)
 
 Faite `reboot`.
 
