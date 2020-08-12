@@ -99,14 +99,14 @@ Pour ajouter temporairement :
 
 `sysctl -w net.ipv4.ip\_forward=1`
 
-Pour faire changement permanent il faut ajouter dans le file:
+Pour faire le changement permanent, il faut ajouter dans le file:
 
 `vim /usr/lib/sysctl.d/50-default.conf`
 `net.ipv4.ip\_forward = 1into file`
 
  <img src="/images/samba_centos7/image3.png">
 
-pour appliquer changement:
+pour appliquer le changement:
 
 `/sbin/sysctl -p`
 
@@ -120,12 +120,10 @@ le serveur de passerelle.
 IP masquerading doit être activé avec iptables (utiliser bon IP et carte
 réseau).
 
-`firewall-cmd --permanent --direct --passthrough ipv4 -t nat -I`
-
-`POSTROUTING -o eth0 -j MASQUERADE -s 192.168.64.0/24`
-
+`firewall-cmd --permanent --direct --passthrough ipv4 -t nat -I POSTROUTING -o eth0 -j MASQUERADE -s 192.168.64.0/24`
+ 
 `firewall-cmd --reload`
-
+ 
  <img src="/images/samba_centos7/image14.png">
 
 
@@ -134,12 +132,14 @@ machine au domaine):
 
 `ping 8.8.8.8`
 
+`ping 1.1.1.1`
+
  <img src="/images/samba_centos7/image15.png">
 
 Installation de Samba-AD 
 ---------------------
 
-### Configurer les règles de pare-feu (plus d'info [ici](https://www.google.com/url?q=https://wiki.samba.org/index.php/Samba_AD_DC_Port_Usage&sa=D&ust=1597182781635000&usg=AOvVaw1QZNxgB27e_1fbPmoUJQVz)) : 
+### Configurer les règles de pare-feu (plus d'info [ici](https://wiki.samba.org/index.php/Samba_AD_DC_Port_Usage)) : 
 
 `systemctl start firewalld`
 
@@ -290,10 +290,12 @@ Relancer NetworkManager pour prendre en compte les changements
 #### Il faut supprimer /var/lib/samba/private/krb5.conf et le remplacer par un lien symbolique vers le fichier /etc/krb5.conf : 
 
  `rm -f /var/lib/samba/private/krb5.conf`
+  
 `ln -s /etc/krb5.conf /var/lib/samba/private/krb5.conf`
 
 #### Activer Samba pour qu’il démarre automatiquement au prochain reboot : 
 `systemctl enable samba`
+ 
 `systemctl start samba`
 
 #### Redémarrer la machine 
@@ -311,6 +313,7 @@ Si ça ne renvoie rien ou que vous obtenez un message concernant
 l’expiration du mot de passe, c’est que c’est bon):
 
 `kinit administrator`
+ 
 `klist`
 
  <img src="/images/samba_centos7/image11.png">
