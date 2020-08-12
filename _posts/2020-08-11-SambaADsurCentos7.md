@@ -57,7 +57,7 @@ eth0 (ens32 pour vmware) - DHCP pour avoir acces internet
 
 `/etc/sysconfig/network-scripts`
 
-![](images/samba_centos7/image8.png)
+ <img src="/images/samba_centos7/image8.png">
 
 eth1 (ens33 pour vmware) static
 
@@ -126,7 +126,7 @@ réseau).
 
 `firewall-cmd --reload`
 
-![](images/image14.png)`
+ <img src="/images/samba_centos7/image14.png">
 
 
 Pour pour vérification (après installation Windows et joindre une
@@ -134,7 +134,7 @@ machine au domaine):
 
 `ping 8.8.8.8`
 
-![](images/image15.png)
+ <img src="/images/samba_centos7/image15.png">
 
 Installation Samba-AD 
 ---------------------
@@ -179,50 +179,50 @@ Pour vérification:
 
 ### Désactiver avahi-daemon (protocol mDNS / bonjour) : 
 
-systemctl stop avahi-daemon.service avahi-daemon.socket
+`systemctl stop avahi-daemon.service avahi-daemon.socket`
 
-systemctl disable avahi-daemon.service avahi-daemon.socket
+`systemctl disable avahi-daemon.service avahi-daemon.socket`
 
 ### Ajouter repo EPEL 
 
-yum update -y
+`yum update -y`
 
-yum install -y epel-release
+`yum install -y epel-release`
 
-yum install -y wget sudo screen nmap telnet tcpdump rsync net-tools
-bind-utils htop
+`yum install -y wget sudo screen nmap telnet tcpdump rsync net-tools`
+`bind-utils htop`
 
 ### Récupérer les paquets nécessaires 
 
 récupérer la clef de signature RPM et configuration d’un dépôt YUM :\
-wget -O /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7
- http://samba.tranquil.it/RPM-GPG-KEY-TISSAMBA-7
+`wget -O /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7`
+ `http://samba.tranquil.it/RPM-GPG-KEY-TISSAMBA-7`
 
-rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7
+`rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7`
 
-echo "[tis-samba]
+`echo "[tis-samba]`
 
-name=tis-samba
+`name=tis-samba`
 
-baseurl=http://samba.tranquil.it/centos7/samba-4.11/
+`baseurl=http://samba.tranquil.it/centos7/samba-4.11/`
 
-gpgcheck=1
+`gpgcheck=1`
 
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7" \>
-/etc/yum.repos.d/tissamba.repo
+`gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7" \>`
+`/etc/yum.repos.d/tissamba.repo`
 
 ### vérifier l’emprunte de la clef avec sha256sum : 
 
-sha256sum /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7
+`sha256sum /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7`
 
-b3cd8395e3d211a8760e95b9bc239513e9384d6c954d17515ae29c18d32a4a11
- /var/www/samba/RPM-GPG-KEY-TISSAMBA-7
+`b3cd8395e3d211a8760e95b9bc239513e9384d6c954d17515ae29c18d32a4a11`
+ `/var/www/samba/RPM-GPG-KEY-TISSAMBA-7`
 
 ### installer les paquets Samba-AD pour CentOS : 
 
-yum install -y samba samba-winbind samba-winbind-clients
-krb5-workstation ldb-tools bind chrony bind-utils samba-client
-python3-crypto
+`yum install -y samba samba-winbind samba-winbind-clients`
+`krb5-workstation ldb-tools bind chrony bind-utils samba-client`
+`python3-crypto`
 
 Instancier le domaine Active Directory Samba 
 --------------------------------------------
@@ -233,21 +233,21 @@ Modifier le fichier /etc/krb5.conf et remplacer tout son contenu par les
 4 lignes suivantes en précisant le domaine Active Directory de votre
 organisation (ici  dc1.domaine.lan) :
 
-[libdefaults]
+`[libdefaults]`
 
-  default\_realm = DOMAINE.LAN
+  `default\_realm = DOMAINE.LAN`
 
-  dns\_lookup\_kdc = false
+  `dns\_lookup\_kdc = false`
 
-  dns\_lookup\_realm = false
+  `dns\_lookup\_realm = false`
 
-[realms]
+`[realms]`
 
-  DOMAINE.LAN = {
+ ` DOMAINE.LAN = {`
 
-  kdc = 127.0.0.1
+  `kdc = 127.0.0.1`
 
-  }
+  `}`
 
 ###  
 
@@ -259,59 +259,58 @@ organisation (ici  dc1.domaine.lan) :
 
         
 
-rm -f /etc/samba/smb.conf
+`rm -f /etc/samba/smb.conf`
 
 #### Configurer Samba avec le rôle de contrôleur de domaine. 
 
  Dans la ligne qui suit, vous penserez à changer à la fois le nom du
 royaume kerberos, et le nom court du domaine (nom netbios) :
 
-samba-tool domain provision --realm=MYDOMAINE.LAN --domain MYDOMAINE
---server-role=dc
+`samba-tool domain provision --realm=MYDOMAINE.LAN --domain MYDOMAINE`
+`--server-role=dc`
 
 #### Réinitialiser le mot de passe administrator : 
 
 ####  
 
-samba-tool user setpassword administrator
+`samba-tool user setpassword administrator`
 
 #### Vérifier la ligne dns forwarder = xxx.xxx.xxx.xxx.dans votre fichier /etc/samba/smb.conf 
 
-vim /etc/samba/smb.conf
+`vim /etc/samba/smb.conf`
 
 Elle doit pointer vers un serveur DNS valide, par ex. :
 
-\
-dns forwarder = 1.1.1.1
 
-![](images/image4.png)
+`dns forwarder = 1.1.1.1`
+ <img src="/images/samba_centos7/image4.png">
 
 #### Reconfigurer la résolution DNS pour la machine locale.
 
  Dans le fichier /etc/sysconfig/network-scripts/ifcfg-xxxx de
 l’interface réseau, remplacer la ligne suivante :\
-DNS1=127.0.0.1
+`DNS1=127.0.0.1`
 
-![](images/image17.png)
+ <img src="/images/samba_centos7/image17.png">
 
 Relancer NetworkManager pour prendre en compte les changements
 
-systemctl restart NetworkManager
+`systemctl restart NetworkManager`
 
 #### Il faut supprimer /var/lib/samba/private/krb5.conf et le remplacer par un lien symbolique vers le fichier /etc/krb5.conf : 
 
- rm -f /var/lib/samba/private/krb5.conf
+ `rm -f /var/lib/samba/private/krb5.conf`
 
-ln -s /etc/krb5.conf /var/lib/samba/private/krb5.conf
+`ln -s /etc/krb5.conf /var/lib/samba/private/krb5.conf`
 
 #### Activer Samba pour qu’il démarre automatiquement au prochain reboot : 
-systemctl enable samba
+`systemctl enable samba`
 
-systemctl start samba
+`systemctl start samba`
 
 #### redémarrer la machine 
 
-reboot
+`reboot`
 
  
 
@@ -323,21 +322,21 @@ ci-dessus avec la commande samba-tool setpassword 
  Si ça ne renvoie rien ou que vous obtenez un message concernant
 l’expiration du mot de passe, c’est que c’est bon):
 
-kinit administrator
+`kinit administrator`
 
-klist
+`klist`
 
-![](images/image11.png)
+ <img src="/images/samba_centos7/image11.png">
 
 #### Tester les DNS : 
 
-dig @localhost google.com
+`dig @localhost google.com`
 
-dig @localhost srvads.domaine.lan
+`dig @localhost srvads.domaine.lan`
 
-dig -t SRV @localhost \_ldap.\_tcp.domaine.lan
+`dig -t SRV @localhost \_ldap.\_tcp.domaine.lan`
 
-![](images/image13.png)
+ <img src="/images/samba_centos7/image13.png">
 
 Joindre une machine au domaine, installation RSAT 
 -------------------------------------------------
@@ -353,12 +352,12 @@ Vous pouvez désormais joindre un poste client Windows dans votre nouveau
 domaine. Ajouter nom de l’ordinateur et domaine.Il faut utiliser
 administrateur de samba (administrator) et password.
 
-![](images/image7.png)
+ <img src="/images/samba_centos7/image7.png">
 
 Redémarrer windows, après redémarrage vous pouvez entrer comme
 administrateur samba:
 
-![](images/image6.png)
+ <img src="/images/samba_centos7/image6.png">
 
 Installation RSAT
 
@@ -376,7 +375,7 @@ RSAT sont un bon complément à la ligne de commande.
     Windows, cliquez sur le lien à droite de la fenêtre Activer ou
     désactiver des fonctionnalités Windows. Vous pouvez sélectionner:
 
-![](images/image1.png)
+ <img src="/images/samba_centos7/image1.png">
 
 #### Vérification finale 
 
@@ -388,7 +387,7 @@ Une fois RSAT installé à partir de MMC vous pouvez avoir accès:
     partir de la console Utilisateurs et Ordinateurs Active Directory ;
 -   créer une nouvelle GPO ;
 
-![](images/image5.png)
+ <img src="/images/samba_centos7/image5.png">
 
 Super, si vous êtes parvenu jusqu’à cette étape, c’est que tout se passe
 bien et que vous avez un nouveau domaine Samba Active Directory
