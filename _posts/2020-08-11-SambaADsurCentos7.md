@@ -349,7 +349,7 @@ RSAT sont un bon complément à la ligne de commande.
 Les étapes d'installation:
 
 -   Télécharger le pack d’outils [depuis le site officiel de
-    Microsoft](https://www.google.com/url?q=https://www.microsoft.com/fr-fr/download/details.aspx?id%3D7887&sa=D&ust=1597182781659000&usg=AOvVaw1fdTseuIF4KUVgIaHCZeot).
+    Microsoft](https://www.microsoft.com/fr-fr/download/details.aspx?id%3D7887&sa=D&ust=1597182781659000&usg=AOvVaw1fdTseuIF4KUVgIaHCZeot).
 -   Installer RSAT
 -   Dans Panneau de configuration -\> Programmes et Fonctionnalités
     Windows, cliquez sur le lien à droite de la fenêtre Activer ou
@@ -380,21 +380,21 @@ opérationnel.
 Mes sources d’inspiration: 
 --------------------------
 
-[https://linuxize.com/post/how-to-install-and-configure-samba-on-centos-7/](https://www.google.com/url?q=https://linuxize.com/post/how-to-install-and-configure-samba-on-centos-7/&sa=D&ust=1597182781662000&usg=AOvVaw2ZOHpU0vjB3DLt6tUpHhB_)
+[https://linuxize.com/post/how-to-install-and-configure-samba-on-centos-7/](https://linuxize.com/post/how-to-install-and-configure-samba-on-centos-7/&sa=D&ust=1597182781662000&usg=AOvVaw2ZOHpU0vjB3DLt6tUpHhB_)
 
-[https://dev.tranquil.it/samba/fr/samba\_config\_server/centos7](https://www.google.com/url?q=https://dev.tranquil.it/samba/fr/samba_config_server/centos7&sa=D&ust=1597182781663000&usg=AOvVaw3CulJko24Xg6zbhrPed6ky)
+[https://dev.tranquil.it/samba/fr/samba\_config\_server/centos7](https://dev.tranquil.it/samba/fr/samba_config_server/centos7&sa=D&ust=1597182781663000&usg=AOvVaw3CulJko24Xg6zbhrPed6ky)
 
-[https://www.serverlab.ca/tutorials/linux/administration-linux/how-to-configure-centos-7-network-settings/](https://www.google.com/url?q=https://www.serverlab.ca/tutorials/linux/administration-linux/how-to-configure-centos-7-network-settings/&sa=D&ust=1597182781663000&usg=AOvVaw1zHGdshJyVuwWMr8oQ08Fn)
+[https://www.serverlab.ca/tutorials/linux/administration-linux/how-to-configure-centos-7-network-settings/](https://www.serverlab.ca/tutorials/linux/administration-linux/how-to-configure-centos-7-network-settings/&sa=D&ust=1597182781663000&usg=AOvVaw1zHGdshJyVuwWMr8oQ08Fn)
 
-[http://www.oameri.com/installer-outils-dadministration-rsat-windows-7/\#:\~:text=En%20premier%20lieu%2C%20t%C3%A9l%C3%A9charger%20le,Next%2C%20cela%20lancera%20le%20t%C3%A9l%C3%A9chargement](https://www.google.com/url?q=http://www.oameri.com/installer-outils-dadministration-rsat-windows-7/%23:~:text%3DEn%2520premier%2520lieu%252C%2520t%25C3%25A9l%25C3%25A9charger%2520le,Next%252C%2520cela%2520lancera%2520le%2520t%25C3%25A9l%25C3%25A9chargement&sa=D&ust=1597182781664000&usg=AOvVaw3qmmMjmYBpz7h76eUCq5wE).
+[http://www.oameri.com/installer-outils-dadministration-rsat-windows-7/\#:\~:text=En%20premier%20lieu%2C%20t%C3%A9l%C3%A9charger%20le,Next%2C%20cela%20lancera%20le%20t%C3%A9l%C3%A9chargement](http://www.oameri.com/installer-outils-dadministration-rsat-windows-7/%23:~:text%3DEn%2520premier%2520lieu%252C%2520t%25C3%25A9l%25C3%25A9charger%2520le,Next%252C%2520cela%2520lancera%2520le%2520t%25C3%25A9l%25C3%25A9chargement&sa=D&ust=1597182781664000&usg=AOvVaw3qmmMjmYBpz7h76eUCq5wE).
 
-[https://www.jjworld.fr/active-directory-linux-avec-samba-4/](https://www.google.com/url?q=https://www.jjworld.fr/active-directory-linux-avec-samba-4/&sa=D&ust=1597182781664000&usg=AOvVaw0IQs6JxAlflbbvX26jfMpN)
+[https://www.jjworld.fr/active-directory-linux-avec-samba-4/](https://www.jjworld.fr/active-directory-linux-avec-samba-4/&sa=D&ust=1597182781664000&usg=AOvVaw0IQs6JxAlflbbvX26jfMpN)
 
-[https://wiki.samba.org/index.php/Samba\_AD\_DC\_Port\_Usage](https://www.google.com/url?q=https://wiki.samba.org/index.php/Samba_AD_DC_Port_Usage&sa=D&ust=1597182781665000&usg=AOvVaw1WjDCSIYlo3qRNWYN9XGEd)
+[https://wiki.samba.org/index.php/Samba\_AD\_DC\_Port\_Usage](https://wiki.samba.org/index.php/Samba_AD_DC_Port_Usage&sa=D&ust=1597182781665000&usg=AOvVaw1WjDCSIYlo3qRNWYN9XGEd)
 
-[https://linuxize.com/post/how-to-install-and-configure-samba-on-centos-7/](https://www.google.com/url?q=https://linuxize.com/post/how-to-install-and-configure-samba-on-centos-7/&sa=D&ust=1597182781665000&usg=AOvVaw3zfpgbXzZjyYNL2x5CYGQR)
+[https://linuxize.com/post/how-to-install-and-configure-samba-on-centos-7/](https://linuxize.com/post/how-to-install-and-configure-samba-on-centos-7/&sa=D&ust=1597182781665000&usg=AOvVaw3zfpgbXzZjyYNL2x5CYGQR)
 
-[https://www.theurbanpenguin.com/configuring-a-centos-7-kerberos-kdc/](https://www.google.com/url?q=https://www.theurbanpenguin.com/configuring-a-centos-7-kerberos-kdc/&sa=D&ust=1597182781665000&usg=AOvVaw2pyEv0s3eUGzcYtcXcCBqR)
+[https://www.theurbanpenguin.com/configuring-a-centos-7-kerberos-kdc/](https://www.theurbanpenguin.com/configuring-a-centos-7-kerberos-kdc/&sa=D&ust=1597182781665000&usg=AOvVaw2pyEv0s3eUGzcYtcXcCBqR)
 
  
 
