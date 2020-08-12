@@ -121,7 +121,9 @@ IP masquerading doit être activé avec iptables (utiliser bon IP et carte
 réseau).
 
 `firewall-cmd --permanent --direct --passthrough ipv4 -t nat -I`
+
 `POSTROUTING -o eth0 -j MASQUERADE -s 192.168.64.0/24`
+
 `firewall-cmd --reload`
 
  <img src="/images/samba_centos7/image14.png">
@@ -154,9 +156,13 @@ Installation Samba-AD
 `firewall-cmd --zone=public --add-port=464/tcp --add-port=464/udp --permanent`
  
 `firewall-cmd --zone=public --add-port=636/tcp --permanent`
+
 `firewall-cmd --zone=public --add-port=3268/tcp --permanent`
+
 `firewall-cmd --zone=public --add-port=3269/tcp --permanent`
+
 `firewall-cmd --zone=public --add-port=50000-51000/tcp --permanent`
+
 `firewall-cmd --zone=public --add-port=49152-65535/tcp --permanent`
 
 `systemctl restart firewalld`
@@ -168,26 +174,38 @@ Pour vérification:
 ### Désactiver avahi-daemon (protocol mDNS / bonjour) : 
 
 `systemctl stop avahi-daemon.service avahi-daemon.socket`
+
 `systemctl disable avahi-daemon.service avahi-daemon.socket`
 
 ### Ajouter repo EPEL 
 
 `yum update -y`
+
 `yum install -y epel-release`
+
 `yum install -y wget sudo screen nmap telnet tcpdump rsync net-tools`
+
 `bind-utils htop`
 
 ### Récupérer les paquets nécessaires 
 
 récupérer la clef de signature RPM et configuration d’un dépôt YUM :\
 `wget -O /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7`
+
  `http://samba.tranquil.it/RPM-GPG-KEY-TISSAMBA-7`
+ 
 `rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7`
+
 `echo "[tis-samba]`
+
 `name=tis-samba`
+
 `baseurl=http://samba.tranquil.it/centos7/samba-4.11/`
+
 `gpgcheck=1`
+
 `gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7" \>`
+
 `/etc/yum.repos.d/tissamba.repo`
 
 ### vérifier l’emprunte de la clef avec sha256sum : 
@@ -215,6 +233,7 @@ organisation (ici  dc1.domaine.lan) :
   `default\_realm = DOMAINE.LAN`
   `dns\_lookup\_kdc = false`
   `dns\_lookup\_realm = false`
+  
 `[realms]`
  ` DOMAINE.LAN = {`
   `kdc = 127.0.0.1`
@@ -295,7 +314,9 @@ l’expiration du mot de passe, c’est que c’est bon):
 #### Tester les DNS : 
 
 `dig @localhost google.com`
+
 `dig @localhost srvads.domaine.lan`
+
 `dig -t SRV @localhost \_ldap.\_tcp.domaine.lan`
 
  <img src="/images/samba_centos7/image13.png">
