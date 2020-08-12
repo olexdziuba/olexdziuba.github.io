@@ -29,7 +29,7 @@ Configuration réseau:
 
         Windows7: eth0: `192.168.64.10/24 (interne)`
 
-1.1 Changement hostname: 
+1.1 Changement de hostname: 
 ------------------------
 
 -   modifier le fichier `/etc/hostname` et changer hostname: 
@@ -40,7 +40,7 @@ Configuration réseau:
 
 -   changer `/etc/hosts: vim /etc/hosts`
 
- (pas modifier les lignes contenant localhost )
+ (ne modifie pas les lignes contenant localhost )
 
  <img src="/images/samba_centos7/image10.png">
 
@@ -51,9 +51,9 @@ Configuration réseau:
 1.2 Configurer l’adresse IP (statique) 
 --------------------------------------
 
-j’utilise:
+J’utilise:
 
-eth0 (ens32 pour vmware) - DHCP pour avoir acces internet
+eth0 (ens32 pour vmware) - DHCP pour avoir accès à l'internet
 
 `/etc/sysconfig/network-scripts`
 
@@ -67,13 +67,13 @@ eth1 (ens33 pour vmware) static
 
  <img src="/images/samba_centos7/image12.png">
 
-Pas proxy!
+Pas  proxy!
 
-Pour configurer réseau on peut aussi  utiliser `nmtui`
+Pour configurer le réseau on peut aussi  utiliser `nmtui`
 
-Pour vérification configuration: `ip a`
+Pour vérification de la configuration: `ip a`
 
-1.3 Désactivation SELinux 
+1.3 Désactivation de SELinux 
 -------------------------
 
 Vérifier que SELinux est désactivé :
@@ -84,9 +84,9 @@ Vérifier que SELinux est désactivé :
 
  <img src="/images/samba_centos7/image16.png">
 
-Faite `reboot`.
+Faire `reboot`.
 
- Vérifier status selinux avec commande
+ Vérifier status SELinux avec commande
 
  `sestatus`
 
@@ -99,7 +99,7 @@ Pour ajouter temporairement :
 
 `sysctl -w net.ipv4.ip\_forward=1`
 
-Pour faire changement permanent il faut ajouter dans file:
+Pour faire changement permanent il faut ajouter dans le file:
 
 `vim /usr/lib/sysctl.d/50-default.conf`
 `net.ipv4.ip\_forward = 1into file`
@@ -129,17 +129,17 @@ réseau).
  <img src="/images/samba_centos7/image14.png">
 
 
-Pour pour vérification (après installation Windows et joindre une
+Pour vérification (après avoir installé  Windows et joint une
 machine au domaine):
 
 `ping 8.8.8.8`
 
  <img src="/images/samba_centos7/image15.png">
 
-Installation Samba-AD 
+Installation de Samba-AD 
 ---------------------
 
-### Configurer les règles de pare-feu (plus info [ici](https://www.google.com/url?q=https://wiki.samba.org/index.php/Samba_AD_DC_Port_Usage&sa=D&ust=1597182781635000&usg=AOvVaw1QZNxgB27e_1fbPmoUJQVz)) : 
+### Configurer les règles de pare-feu (plus d'info [ici](https://www.google.com/url?q=https://wiki.samba.org/index.php/Samba_AD_DC_Port_Usage&sa=D&ust=1597182781635000&usg=AOvVaw1QZNxgB27e_1fbPmoUJQVz)) : 
 
 `systemctl start firewalld`
 
@@ -189,7 +189,7 @@ Pour vérification:
 
 ### Récupérer les paquets nécessaires 
 
-récupérer la clef de signature RPM et configuration d’un dépôt YUM :\
+Récupérer la clé de signature RPM et configuration d’un dépôt YUM :\
 `wget -O /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7`
 
  `http://samba.tranquil.it/RPM-GPG-KEY-TISSAMBA-7`
@@ -208,13 +208,13 @@ récupérer la clef de signature RPM et configuration d’un dépôt YUM :\
 
 `/etc/yum.repos.d/tissamba.repo`
 
-### vérifier l’emprunte de la clef avec sha256sum : 
+### Vérifier l’emprunte de la clef avec sha256sum : 
 
 `sha256sum /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7`
 `b3cd8395e3d211a8760e95b9bc239513e9384d6c954d17515ae29c18d32a4a11`
  `/var/www/samba/RPM-GPG-KEY-TISSAMBA-7`
 
-### installer les paquets Samba-AD pour CentOS : 
+### Installer les paquets Samba-AD pour CentOS : 
 
 `yum install -y samba samba-winbind samba-winbind-clients`
 `krb5-workstation ldb-tools bind chrony bind-utils samba-client`
@@ -254,7 +254,7 @@ organisation (ici  dc1.domaine.lan) :
 
 #### Configurer Samba avec le rôle de contrôleur de domaine. 
 
- Dans la ligne qui suit, vous penserez à changer à la fois le nom du
+Dans la ligne qui suit, vous penserez à changer à la fois le nom du
 royaume kerberos, et le nom court du domaine (nom netbios):
 
 `samba-tool domain provision --realm=MYDOMAINE.LAN --domain MYDOMAINE`
@@ -296,18 +296,18 @@ Relancer NetworkManager pour prendre en compte les changements
 `systemctl enable samba`
 `systemctl start samba`
 
-#### redémarrer la machine 
+#### Redémarrer la machine 
 
 `reboot`
 
  
 
-#### Tester que le kerberos 
+#### Tester le kerberos 
 
 Taper le mot de passe du compte administrator que vous avez défini
 ci-dessus avec la commande samba-tool setpassword 
 
- Si ça ne renvoie rien ou que vous obtenez un message concernant
+Si ça ne renvoie rien ou que vous obtenez un message concernant
 l’expiration du mot de passe, c’est que c’est bon):
 
 `kinit administrator`
@@ -325,7 +325,7 @@ l’expiration du mot de passe, c’est que c’est bon):
 
  <img src="/images/samba_centos7/image13.png">
 
-Joindre une machine au domaine, installation RSAT 
+Joindre une machine au domaine, installer RSAT 
 -------------------------------------------------
 
 #### Installation Windows 7 
