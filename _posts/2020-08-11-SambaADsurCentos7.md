@@ -328,7 +328,7 @@ l’expiration du mot de passe, c’est que c’est bon):
 Joindre une machine au domaine, installer RSAT 
 -------------------------------------------------
 
-#### Installation Windows 7 
+#### Installer  Windows 7 
 
 Il faut installer Windows ( Windows 7), configuration réseau: static,
 même range que CentOS7. (192.168.64.10/24)
@@ -336,24 +336,24 @@ même range que CentOS7. (192.168.64.10/24)
 #### Joindre Windows au domaine 
 
 Vous pouvez désormais joindre un poste client Windows dans votre nouveau
-domaine. Ajouter nom de l’ordinateur et domaine.Il faut utiliser
-administrateur de samba (administrator) et password.
+domaine. Ajouter le nom de l’ordinateur et du domaine.Il faut utiliser
+l'administrateur de samba (administrator) et password.
 
  <img src="/images/samba_centos7/image7.png">
 
-Redémarrer windows, après redémarrage vous pouvez entrer comme
+Redémarrer Windows, après redémarrage vous pouvez entrer comme
 administrateur samba:
 
  <img src="/images/samba_centos7/image6.png">
 
-Installation RSAT
+#### Installer RSAT
 
 Pour gérer votre nouveau domaine, il faut installer les interfaces de
 management sur un poste Windows. La ligne de commande Samba est efficace
 pour de nombreuses tâches d’administration, et les interfaces graphiques
 RSAT sont un bon complément à la ligne de commande.
 
-Étapes d'installation:
+Les étapes d'installation:
 
 -   Télécharger le pack d’outils [depuis le site officiel de
     Microsoft](https://www.google.com/url?q=https://www.microsoft.com/fr-fr/download/details.aspx?id%3D7887&sa=D&ust=1597182781659000&usg=AOvVaw1fdTseuIF4KUVgIaHCZeot).
@@ -376,8 +376,8 @@ Une fois RSAT installé à partir de MMC vous pouvez avoir accès:
 
  <img src="/images/samba_centos7/image5.png">
 
-Super, si vous êtes parvenu jusqu’à cette étape, c’est que tout se passe
-bien et que vous avez un nouveau domaine Samba Active Directory
+Super, si vous êtes parvenu jusqu’à cette étape, c’est que  tout s'est passé bien 
+ et que vous avez un nouveau domaine Samba Active Directory
 opérationnel.
 
 * * * * *
