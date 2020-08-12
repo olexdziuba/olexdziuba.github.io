@@ -102,7 +102,7 @@ Pour ajouter temporairement :
 Pour faire le changement permanent, il faut ajouter dans le file:
 
 `vim /usr/lib/sysctl.d/50-default.conf`
-`net.ipv4.ip\_forward = 1into file`
+`net.ipv4.ip\_forward = 1`
 
  <img src="/images/samba_centos7/image3.png">
 
@@ -114,11 +114,9 @@ or `reboot`
 
 #### Enable NAT
 
-Le nœud interne doit maintenant pouvoir accéder à l'Internet public via
-le serveur de passerelle.
+Le nœud interne doit maintenant pouvoir accéder à l'Internet public via le serveur de passerelle.
 
-IP masquerading doit être activé avec iptables (utiliser bon IP et carte
-réseau).
+IP masquerading doit être activé avec iptables (utiliser bon IP et carte réseau).
 
 `firewall-cmd --permanent --direct --passthrough ipv4 -t nat -I POSTROUTING -o eth0 -j MASQUERADE -s 192.168.64.0/24`
  
@@ -127,8 +125,7 @@ réseau).
  <img src="/images/samba_centos7/image14.png">
 
 
-Pour vérification (après avoir installé  Windows et joint une
-machine au domaine):
+Pour vérification (après avoir installé  Windows et joint une machine au domaine):
 
 `ping 8.8.8.8`
 
@@ -189,10 +186,10 @@ Pour vérification:
 
 ### Récupérer les paquets nécessaires 
 
-Récupérer la clé de signature RPM et configuration d’un dépôt YUM :\
-`wget -O /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7`
+Récupérer la clé de signature RPM et configuration d’un dépôt YUM :
 
- `http://samba.tranquil.it/RPM-GPG-KEY-TISSAMBA-7`
+`wget -O /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7  http://samba.tranquil.it/RPM-GPG-KEY-TISSAMBA-7
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7`
  
 `rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7`
 
@@ -204,30 +201,23 @@ Récupérer la clé de signature RPM et configuration d’un dépôt YUM :\
 
 `gpgcheck=1`
 
-`gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7" \>`
-
-`/etc/yum.repos.d/tissamba.repo`
+`gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7" > /etc/yum.repos.d/tissamba.repo`
 
 ### Vérifier l’emprunte de la clef avec sha256sum : 
 
 `sha256sum /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7`
-`b3cd8395e3d211a8760e95b9bc239513e9384d6c954d17515ae29c18d32a4a11`
- `/var/www/samba/RPM-GPG-KEY-TISSAMBA-7`
+`b3cd8395e3d211a8760e95b9bc239513e9384d6c954d17515ae29c18d32a4a11 /var/www/samba/RPM-GPG-KEY-TISSAMBA-7`
 
 ### Installer les paquets Samba-AD pour CentOS : 
 
-`yum install -y samba samba-winbind samba-winbind-clients`
-`krb5-workstation ldb-tools bind chrony bind-utils samba-client`
-`python3-crypto`
+`yum install -y samba samba-winbind samba-winbind-clients krb5-workstation ldb-tools bind chrony bind-utils samba-client python3-crypto`
 
 Instancier le domaine Active Directory Samba 
 --------------------------------------------
 
 ### Configurer Kerberos 
 
-Modifier le fichier /etc/krb5.conf et remplacer tout son contenu par les
-4 lignes suivantes en précisant le domaine Active Directory de votre
-organisation (ici  dc1.domaine.lan) :
+Modifier le fichier /etc/krb5.conf et remplacer tout son contenu par les 4 lignes suivantes en précisant le domaine Active Directory de votre organisation (ici  dc1.domaine.lan):
 
 `[libdefaults]`
 
