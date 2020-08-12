@@ -255,7 +255,7 @@ organisation (ici  dc1.domaine.lan) :
 #### Configurer Samba avec le rôle de contrôleur de domaine. 
 
  Dans la ligne qui suit, vous penserez à changer à la fois le nom du
-royaume kerberos, et le nom court du domaine (nom netbios) :
+royaume kerberos, et le nom court du domaine (nom netbios):
 
 `samba-tool domain provision --realm=MYDOMAINE.LAN --domain MYDOMAINE`
 `--server-role=dc`
