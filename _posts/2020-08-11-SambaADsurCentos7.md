@@ -140,22 +140,25 @@ Installation Samba-AD
 ### Configurer les règles de pare-feu (plus info [ici](https://www.google.com/url?q=https://wiki.samba.org/index.php/Samba_AD_DC_Port_Usage&sa=D&ust=1597182781635000&usg=AOvVaw1QZNxgB27e_1fbPmoUJQVz)) : 
 
 `systemctl start firewalld`
+
 `systemctl enable firewalld`
-`firewall-cmd --zone=public --add-port=53/tcp --add-port=53/udp`
-`--permanent`
-`firewall-cmd --zone=public --add-port=88/tcp --add-port=88/udp`
-`--permanent`
+
+`firewall-cmd --zone=public --add-port=53/tcp --add-port=53/udp --permanent`
+
+`firewall-cmd --zone=public --add-port=88/tcp --add-port=88/udp --permanent`
+
 `firewall-cmd --zone=public --add-port=135/tcp --permanent`
-`firewall-cmd --zone=public --add-port=389/tcp --add-port=389/udp`
-`--permanent`
+`firewall-cmd --zone=public --add-port=389/tcp --add-port=389/udp --permanent`
+
 `firewall-cmd --zone=public --add-port=445/tcp --permanent`
-`firewall-cmd --zone=public --add-port=464/tcp --add-port=464/udp`
-`--permanent`
+`firewall-cmd --zone=public --add-port=464/tcp --add-port=464/udp --permanent`
+ 
 `firewall-cmd --zone=public --add-port=636/tcp --permanent`
 `firewall-cmd --zone=public --add-port=3268/tcp --permanent`
 `firewall-cmd --zone=public --add-port=3269/tcp --permanent`
 `firewall-cmd --zone=public --add-port=50000-51000/tcp --permanent`
 `firewall-cmd --zone=public --add-port=49152-65535/tcp --permanent`
+
 `systemctl restart firewalld`
 
 Pour vérification:
