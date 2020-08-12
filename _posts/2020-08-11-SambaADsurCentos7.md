@@ -36,7 +36,7 @@ Configuration réseau:
      `vim  /etc/hostname`
 -   vérifier: `cat /etc/hostname`
 
-![](images/image2.png)
+<img src="/images/samba_centos7/image2.png">
 
 -   changer `/etc/hosts: vim /etc/hosts`
 
@@ -230,13 +230,16 @@ Modifier le fichier /etc/krb5.conf et remplacer tout son contenu par les
 organisation (ici  dc1.domaine.lan) :
 
 `[libdefaults]`
+
   `default\_realm = DOMAINE.LAN`
   `dns\_lookup\_kdc = false`
   `dns\_lookup\_realm = false`
   
 `[realms]`
  ` DOMAINE.LAN = {`
+ 
   `kdc = 127.0.0.1`
+  
   `}`
  
 
