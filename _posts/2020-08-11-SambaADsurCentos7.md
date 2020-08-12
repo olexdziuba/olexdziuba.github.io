@@ -267,8 +267,9 @@ royaume kerberos, et le nom court du domaine (nom netbios) :
 
 Elle doit pointer vers un serveur DNS valide, par ex. :
 
-
 `dns forwarder = 1.1.1.1`
+
+
  <img src="/images/samba_centos7/image4.png">
 
 #### Reconfigurer la résolution DNS pour la machine locale.
