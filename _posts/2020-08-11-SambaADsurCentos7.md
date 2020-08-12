@@ -102,7 +102,6 @@ Pour ajouter temporairement :
 Pour faire changement permanent il faut ajouter dans file:
 
 `vim /usr/lib/sysctl.d/50-default.conf`
-
 `net.ipv4.ip\_forward = 1into file`
 
  <img src="/images/samba_centos7/image3.png">
@@ -123,7 +122,6 @@ réseau).
 
 `firewall-cmd --permanent --direct --passthrough ipv4 -t nat -I`
 `POSTROUTING -o eth0 -j MASQUERADE -s 192.168.64.0/24`
-
 `firewall-cmd --reload`
 
  <img src="/images/samba_centos7/image14.png">
@@ -142,35 +140,22 @@ Installation Samba-AD
 ### Configurer les règles de pare-feu (plus info [ici](https://www.google.com/url?q=https://wiki.samba.org/index.php/Samba_AD_DC_Port_Usage&sa=D&ust=1597182781635000&usg=AOvVaw1QZNxgB27e_1fbPmoUJQVz)) : 
 
 `systemctl start firewalld`
-
 `systemctl enable firewalld`
-
 `firewall-cmd --zone=public --add-port=53/tcp --add-port=53/udp`
 `--permanent`
-
 `firewall-cmd --zone=public --add-port=88/tcp --add-port=88/udp`
 `--permanent`
-
 `firewall-cmd --zone=public --add-port=135/tcp --permanent`
-
 `firewall-cmd --zone=public --add-port=389/tcp --add-port=389/udp`
 `--permanent`
-
 `firewall-cmd --zone=public --add-port=445/tcp --permanent`
-
 `firewall-cmd --zone=public --add-port=464/tcp --add-port=464/udp`
 `--permanent`
-
 `firewall-cmd --zone=public --add-port=636/tcp --permanent`
-
 `firewall-cmd --zone=public --add-port=3268/tcp --permanent`
-
 `firewall-cmd --zone=public --add-port=3269/tcp --permanent`
-
 `firewall-cmd --zone=public --add-port=50000-51000/tcp --permanent`
-
 `firewall-cmd --zone=public --add-port=49152-65535/tcp --permanent`
-
 `systemctl restart firewalld`
 
 Pour vérification:
@@ -180,15 +165,12 @@ Pour vérification:
 ### Désactiver avahi-daemon (protocol mDNS / bonjour) : 
 
 `systemctl stop avahi-daemon.service avahi-daemon.socket`
-
 `systemctl disable avahi-daemon.service avahi-daemon.socket`
 
 ### Ajouter repo EPEL 
 
 `yum update -y`
-
 `yum install -y epel-release`
-
 `yum install -y wget sudo screen nmap telnet tcpdump rsync net-tools`
 `bind-utils htop`
 
@@ -197,24 +179,17 @@ Pour vérification:
 récupérer la clef de signature RPM et configuration d’un dépôt YUM :\
 `wget -O /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7`
  `http://samba.tranquil.it/RPM-GPG-KEY-TISSAMBA-7`
-
 `rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7`
-
 `echo "[tis-samba]`
-
 `name=tis-samba`
-
 `baseurl=http://samba.tranquil.it/centos7/samba-4.11/`
-
 `gpgcheck=1`
-
 `gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7" \>`
 `/etc/yum.repos.d/tissamba.repo`
 
 ### vérifier l’emprunte de la clef avec sha256sum : 
 
 `sha256sum /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7`
-
 `b3cd8395e3d211a8760e95b9bc239513e9384d6c954d17515ae29c18d32a4a11`
  `/var/www/samba/RPM-GPG-KEY-TISSAMBA-7`
 
@@ -234,22 +209,14 @@ Modifier le fichier /etc/krb5.conf et remplacer tout son contenu par les
 organisation (ici  dc1.domaine.lan) :
 
 `[libdefaults]`
-
   `default\_realm = DOMAINE.LAN`
-
   `dns\_lookup\_kdc = false`
-
   `dns\_lookup\_realm = false`
-
 `[realms]`
-
  ` DOMAINE.LAN = {`
-
   `kdc = 127.0.0.1`
-
   `}`
-
-###  
+ 
 
 ### Configurer Samba 
 
@@ -257,8 +224,7 @@ organisation (ici  dc1.domaine.lan) :
 
 (il sera régénéré par la commande d’instanciation) :
 
-        
-
+   
 `rm -f /etc/samba/smb.conf`
 
 #### Configurer Samba avec le rôle de contrôleur de domaine. 
@@ -270,8 +236,6 @@ royaume kerberos, et le nom court du domaine (nom netbios) :
 `--server-role=dc`
 
 #### Réinitialiser le mot de passe administrator : 
-
-####  
 
 `samba-tool user setpassword administrator`
 
@@ -300,12 +264,10 @@ Relancer NetworkManager pour prendre en compte les changements
 #### Il faut supprimer /var/lib/samba/private/krb5.conf et le remplacer par un lien symbolique vers le fichier /etc/krb5.conf : 
 
  `rm -f /var/lib/samba/private/krb5.conf`
-
 `ln -s /etc/krb5.conf /var/lib/samba/private/krb5.conf`
 
 #### Activer Samba pour qu’il démarre automatiquement au prochain reboot : 
 `systemctl enable samba`
-
 `systemctl start samba`
 
 #### redémarrer la machine 
@@ -323,7 +285,6 @@ ci-dessus avec la commande samba-tool setpassword 
 l’expiration du mot de passe, c’est que c’est bon):
 
 `kinit administrator`
-
 `klist`
 
  <img src="/images/samba_centos7/image11.png">
@@ -331,9 +292,7 @@ l’expiration du mot de passe, c’est que c’est bon):
 #### Tester les DNS : 
 
 `dig @localhost google.com`
-
 `dig @localhost srvads.domaine.lan`
-
 `dig -t SRV @localhost \_ldap.\_tcp.domaine.lan`
 
  <img src="/images/samba_centos7/image13.png">
@@ -418,6 +377,4 @@ Mes sources d’inspiration:
 
  
 
-* * * * *
 
-[[1]](#ftnt_ref1)
