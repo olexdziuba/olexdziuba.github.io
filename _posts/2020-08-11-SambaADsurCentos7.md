@@ -42,7 +42,7 @@ Configuration réseau:
 
  (pas modifier les lignes contenant localhost )
 
- <img src="/images/samba_centos7/image10.png>
+ <img src="/images/samba_centos7/image10.png">
 
 
 
@@ -65,7 +65,7 @@ eth1 (ens33 pour vmware) static
 
 `/etc/sysconfig/network-scripts`
 
-![](images/samba_centos7/image12.png)
+ <img src="/images/samba_centos7/image12.png">
 
 Pas proxy!
 
@@ -82,7 +82,7 @@ Vérifier que SELinux est désactivé :
 
 `selinux=disabled`
 
-![](images/samba_centos7/image16.png)
+ <img src="/images/samba_centos7/image16.png">
 
 Faite `reboot`.
 
@@ -90,7 +90,7 @@ Faite `reboot`.
 
  `sestatus`
 
-![](images/samba_centos7/image9.png)
+ <img src="/images/samba_centos7/image9.png">
 
 Activer le mode routeur et le NAT 
 ---------------------------------
@@ -105,7 +105,7 @@ Pour faire changement permanent il faut ajouter dans file:
 
 `net.ipv4.ip\_forward = 1into file`
 
-![](images/samba_centos7/image3.png)
+ <img src="/images/samba_centos7/image3.png">
 
 pour appliquer changement:
 
