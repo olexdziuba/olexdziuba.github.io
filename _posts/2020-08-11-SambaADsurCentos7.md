@@ -7,7 +7,7 @@ header:
 excerpt: "System administration"
 mathjax: "true"
 --- 
-Installation et configuration de serveur Samba-AD sur CentOS7
+
 ------------------------
 
 1.Préparation de CentOS7 
@@ -99,14 +99,14 @@ Pour ajouter temporairement :
 
 `sysctl -w net.ipv4.ip\_forward=1`
 
-Pour faire changement permanent il faut ajouter dans le file:
+Pour faire le changement permanent, il faut ajouter dans le file:
 
 `vim /usr/lib/sysctl.d/50-default.conf`
-`net.ipv4.ip\_forward = 1into file`
+`net.ipv4.ip\_forward = 1`
 
  <img src="/images/samba_centos7/image3.png">
 
-pour appliquer changement:
+pour appliquer le changement:
 
 `/sbin/sysctl -p`
 
@@ -114,32 +114,29 @@ or `reboot`
 
 #### Enable NAT
 
-Le nœud interne doit maintenant pouvoir accéder à l'Internet public via
-le serveur de passerelle.
+Le nœud interne doit maintenant pouvoir accéder à l'Internet public via le serveur de passerelle.
 
-IP masquerading doit être activé avec iptables (utiliser bon IP et carte
-réseau).
+IP masquerading doit être activé avec iptables (utiliser bon IP et carte réseau).
 
-`firewall-cmd --permanent --direct --passthrough ipv4 -t nat -I`
-
-`POSTROUTING -o eth0 -j MASQUERADE -s 192.168.64.0/24`
-
+`firewall-cmd --permanent --direct --passthrough ipv4 -t nat -I POSTROUTING -o eth0 -j MASQUERADE -s 192.168.64.0/24`
+ 
 `firewall-cmd --reload`
-
+ 
  <img src="/images/samba_centos7/image14.png">
 
 
-Pour vérification (après avoir installé  Windows et joint une
-machine au domaine):
+Pour vérification (après avoir installé  Windows et joint une machine au domaine):
 
-`ping 8.8.8.8`
+`ping 8.8.8.8` 
+ou 
+`ping 1.1.1.1`
 
  <img src="/images/samba_centos7/image15.png">
 
 Installation de Samba-AD 
 ---------------------
 
-### Configurer les règles de pare-feu (plus d'info [ici](https://www.google.com/url?q=https://wiki.samba.org/index.php/Samba_AD_DC_Port_Usage&sa=D&ust=1597182781635000&usg=AOvVaw1QZNxgB27e_1fbPmoUJQVz)) : 
+### Configurer les règles de pare-feu (plus d'info [ici](https://wiki.samba.org/index.php/Samba_AD_DC_Port_Usage)) : 
 
 `systemctl start firewalld`
 
@@ -189,10 +186,10 @@ Pour vérification:
 
 ### Récupérer les paquets nécessaires 
 
-Récupérer la clé de signature RPM et configuration d’un dépôt YUM :\
-`wget -O /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7`
+Récupérer la clé de signature RPM et configuration d’un dépôt YUM :
 
- `http://samba.tranquil.it/RPM-GPG-KEY-TISSAMBA-7`
+`wget -O /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7  http://samba.tranquil.it/RPM-GPG-KEY-TISSAMBA-7
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7`
  
 `rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7`
 
@@ -204,30 +201,23 @@ Récupérer la clé de signature RPM et configuration d’un dépôt YUM :\
 
 `gpgcheck=1`
 
-`gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7" \>`
-
-`/etc/yum.repos.d/tissamba.repo`
+`gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7" > /etc/yum.repos.d/tissamba.repo`
 
 ### Vérifier l’emprunte de la clef avec sha256sum : 
 
-`sha256sum /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7`
-`b3cd8395e3d211a8760e95b9bc239513e9384d6c954d17515ae29c18d32a4a11`
- `/var/www/samba/RPM-GPG-KEY-TISSAMBA-7`
+`sha256sum /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7
+b3cd8395e3d211a8760e95b9bc239513e9384d6c954d17515ae29c18d32a4a11  /var/www/samba/RPM-GPG-KEY-TISSAMBA-7`
 
 ### Installer les paquets Samba-AD pour CentOS : 
 
-`yum install -y samba samba-winbind samba-winbind-clients`
-`krb5-workstation ldb-tools bind chrony bind-utils samba-client`
-`python3-crypto`
+`yum install -y samba samba-winbind samba-winbind-clients krb5-workstation ldb-tools bind chrony bind-utils samba-client python3-crypto`
 
 Instancier le domaine Active Directory Samba 
 --------------------------------------------
 
 ### Configurer Kerberos 
 
-Modifier le fichier /etc/krb5.conf et remplacer tout son contenu par les
-4 lignes suivantes en précisant le domaine Active Directory de votre
-organisation (ici  dc1.domaine.lan) :
+Modifier le fichier /etc/krb5.conf et remplacer tout son contenu par les 4 lignes suivantes en précisant le domaine Active Directory de votre organisation (ici  dc1.domaine.lan):
 
 `[libdefaults]`
 
@@ -257,8 +247,7 @@ organisation (ici  dc1.domaine.lan) :
 Dans la ligne qui suit, vous penserez à changer à la fois le nom du
 royaume kerberos, et le nom court du domaine (nom netbios):
 
-`samba-tool domain provision --realm=MYDOMAINE.LAN --domain MYDOMAINE`
-`--server-role=dc`
+`samba-tool domain provision --realm=DOMAINE.LAN --domain DOMAINE--server-role=dc`
 
 #### Réinitialiser le mot de passe administrator : 
 
@@ -277,9 +266,8 @@ Elle doit pointer vers un serveur DNS valide, par ex. :
 
 #### Reconfigurer la résolution DNS pour la machine locale.
 
- Dans le fichier /etc/sysconfig/network-scripts/ifcfg-xxxx de
-l’interface réseau, remplacer la ligne suivante :\
-`DNS1=127.0.0.1`
+ Dans le fichier /etc/sysconfig/network-scripts/ifcfg-xxxx de l’interface réseau, remplacer la ligne suivante :
+ `DNS1=127.0.0.1`
 
  <img src="/images/samba_centos7/image17.png">
 
@@ -290,10 +278,12 @@ Relancer NetworkManager pour prendre en compte les changements
 #### Il faut supprimer /var/lib/samba/private/krb5.conf et le remplacer par un lien symbolique vers le fichier /etc/krb5.conf : 
 
  `rm -f /var/lib/samba/private/krb5.conf`
+  
 `ln -s /etc/krb5.conf /var/lib/samba/private/krb5.conf`
 
 #### Activer Samba pour qu’il démarre automatiquement au prochain reboot : 
 `systemctl enable samba`
+ 
 `systemctl start samba`
 
 #### Redémarrer la machine 
@@ -304,13 +294,12 @@ Relancer NetworkManager pour prendre en compte les changements
 
 #### Tester le kerberos 
 
-Taper le mot de passe du compte administrator que vous avez défini
-ci-dessus avec la commande samba-tool setpassword 
+Taper le mot de passe du compte administrator que vous avez défini ci-dessus avec la commande `samba-tool setpassword` 
 
-Si ça ne renvoie rien ou que vous obtenez un message concernant
-l’expiration du mot de passe, c’est que c’est bon):
+Si ça ne renvoie rien ou que vous obtenez un message concernant l’expiration du mot de passe, c’est que c’est bon:
 
 `kinit administrator`
+ 
 `klist`
 
  <img src="/images/samba_centos7/image11.png">
@@ -330,37 +319,28 @@ Joindre une machine au domaine, installer RSAT
 
 #### Installer  Windows 7 
 
-Il faut installer Windows ( Windows 7), configuration réseau: static,
-même range que CentOS7. (192.168.64.10/24)
+Il faut installer Windows ( Windows 7), configuration réseau: static, même range que CentOS7. (192.168.64.10/24)
 
 #### Joindre Windows au domaine 
 
-Vous pouvez désormais joindre un poste client Windows dans votre nouveau
-domaine. Ajouter le nom de l’ordinateur et du domaine.Il faut utiliser
-l'administrateur de samba (administrator) et password.
+Vous pouvez désormais joindre un poste client Windows dans votre nouveau domaine. Ajouter le nom de l’ordinateur et du domaine.Il faut utiliser l'administrateur de Samba (administrator) et password.
 
  <img src="/images/samba_centos7/image7.png">
 
-Redémarrer Windows, après redémarrage vous pouvez entrer comme
-administrateur samba:
+Redémarrer Windows, après redémarrage vous pouvez entrer comme administrateur Samba:
 
  <img src="/images/samba_centos7/image6.png">
 
 #### Installer RSAT
 
-Pour gérer votre nouveau domaine, il faut installer les interfaces de
-management sur un poste Windows. La ligne de commande Samba est efficace
-pour de nombreuses tâches d’administration, et les interfaces graphiques
-RSAT sont un bon complément à la ligne de commande.
+Pour gérer votre nouveau domaine, il faut installer les interfaces de management sur un poste Windows. La ligne de commande Samba est efficace pour de nombreuses tâches d’administration, et les interfaces graphiques RSAT sont un bon complément à la ligne de commande.
 
 Les étapes d'installation:
 
 -   Télécharger le pack d’outils [depuis le site officiel de
-    Microsoft](https://www.google.com/url?q=https://www.microsoft.com/fr-fr/download/details.aspx?id%3D7887&sa=D&ust=1597182781659000&usg=AOvVaw1fdTseuIF4KUVgIaHCZeot).
+    Microsoft](https://www.microsoft.com/fr-fr/download/details.aspx?id%3D7887&sa=D&ust=1597182781659000&usg=AOvVaw1fdTseuIF4KUVgIaHCZeot).
 -   Installer RSAT
--   Dans Panneau de configuration -\> Programmes et Fonctionnalités
-    Windows, cliquez sur le lien à droite de la fenêtre Activer ou
-    désactiver des fonctionnalités Windows. Vous pouvez sélectionner:
+-   Dans Panneau de configuration -\> Programmes et Fonctionnalités     Windows, cliquez sur le lien à droite de la fenêtre Activer ou     désactiver des fonctionnalités Windows. Vous pouvez sélectionner:
 
  <img src="/images/samba_centos7/image1.png">
 
@@ -368,17 +348,13 @@ Les étapes d'installation:
 
 Une fois RSAT installé à partir de MMC vous pouvez avoir accès:
 
--   créer et supprimer un enregistrement DNS à partir de la console DNS
-    Active Directory ;
--   créer et supprimer un compte utilisateur ou un compte machine à
-    partir de la console Utilisateurs et Ordinateurs Active Directory ;
+-   créer et supprimer un enregistrement DNS à partir de la console DNS     Active Directory ;
+-   créer et supprimer un compte utilisateur ou un compte machine à     partir de la console Utilisateurs et Ordinateurs Active Directory ;
 -   créer une nouvelle GPO ;
 
  <img src="/images/samba_centos7/image5.png">
 
-Super, si vous êtes parvenu jusqu’à cette étape, c’est que  tout s'est passé bien 
- et que vous avez un nouveau domaine Samba Active Directory
-opérationnel.
+Super, si vous êtes parvenu jusqu’à cette étape, c’est que  tout s'est passé bien  et que vous avez un nouveau domaine Samba Active Directory opérationnel.
 
 * * * * *
 
@@ -387,21 +363,19 @@ opérationnel.
 Mes sources d’inspiration: 
 --------------------------
 
-[https://linuxize.com/post/how-to-install-and-configure-samba-on-centos-7/](https://www.google.com/url?q=https://linuxize.com/post/how-to-install-and-configure-samba-on-centos-7/&sa=D&ust=1597182781662000&usg=AOvVaw2ZOHpU0vjB3DLt6tUpHhB_)
+[How to Install and Configure Samba on CentOS 7](https://linuxize.com/post/how-to-install-and-configure-samba-on-centos-7/)
 
-[https://dev.tranquil.it/samba/fr/samba\_config\_server/centos7](https://www.google.com/url?q=https://dev.tranquil.it/samba/fr/samba_config_server/centos7&sa=D&ust=1597182781663000&usg=AOvVaw3CulJko24Xg6zbhrPed6ky)
+[Installer et configurer Samba-AD sur CentOS7](https://dev.tranquil.it/samba/fr/samba_config_server/centos7/server_install_samba_centos.html#)
 
-[https://www.serverlab.ca/tutorials/linux/administration-linux/how-to-configure-centos-7-network-settings/](https://www.google.com/url?q=https://www.serverlab.ca/tutorials/linux/administration-linux/how-to-configure-centos-7-network-settings/&sa=D&ust=1597182781663000&usg=AOvVaw1zHGdshJyVuwWMr8oQ08Fn)
+[How to Configure CentOS 7 Network Settings](https://www.serverlab.ca/tutorials/linux/administration-linux/how-to-configure-centos-7-network-settings/)
 
 [Installer les outils d’administration (RSAT) sous Windows 7](http://www.oameri.com/installer-outils-dadministration-rsat-windows-7/).
 
-[https://www.jjworld.fr/active-directory-linux-avec-samba-4/](https://www.google.com/url?q=https://www.jjworld.fr/active-directory-linux-avec-samba-4/&sa=D&ust=1597182781664000&usg=AOvVaw0IQs6JxAlflbbvX26jfMpN)
+[Installer Samba 4 – Active Directory sous Linux](https://www.jjworld.fr/active-directory-linux-avec-samba-4/)
 
-[https://wiki.samba.org/index.php/Samba\_AD\_DC\_Port\_Usage](https://www.google.com/url?q=https://wiki.samba.org/index.php/Samba_AD_DC_Port_Usage&sa=D&ust=1597182781665000&usg=AOvVaw1WjDCSIYlo3qRNWYN9XGEd)
+[Samba AD DC Port Usage](https://wiki.samba.org/index.php/Samba_AD_DC_Port_Usage)
 
-[https://linuxize.com/post/how-to-install-and-configure-samba-on-centos-7/](https://www.google.com/url?q=https://linuxize.com/post/how-to-install-and-configure-samba-on-centos-7/&sa=D&ust=1597182781665000&usg=AOvVaw3zfpgbXzZjyYNL2x5CYGQR)
-
-[https://www.theurbanpenguin.com/configuring-a-centos-7-kerberos-kdc/](https://www.google.com/url?q=https://www.theurbanpenguin.com/configuring-a-centos-7-kerberos-kdc/&sa=D&ust=1597182781665000&usg=AOvVaw2pyEv0s3eUGzcYtcXcCBqR)
+[Configuring a CentOS 7 Kerberos KDC](https://www.theurbanpenguin.com/configuring-a-centos-7-kerberos-kdc/)
 
  
 
