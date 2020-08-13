@@ -7,7 +7,7 @@ header:
 excerpt: "System administration"
 mathjax: "true"
 --- 
-Installation et configuration de serveur Samba-AD sur CentOS7
+
 ------------------------
 
 1.Préparation de CentOS7 
