@@ -127,8 +127,8 @@ IP masquerading doit être activé avec iptables (utiliser bon IP et carte rése
 
 Pour vérification (après avoir installé  Windows et joint une machine au domaine):
 
-`ping 8.8.8.8`
-
+`ping 8.8.8.8` 
+ou 
 `ping 1.1.1.1`
 
  <img src="/images/samba_centos7/image15.png">
@@ -205,8 +205,8 @@ rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7`
 
 ### Vérifier l’emprunte de la clef avec sha256sum : 
 
-`sha256sum /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7`
-`b3cd8395e3d211a8760e95b9bc239513e9384d6c954d17515ae29c18d32a4a11 /var/www/samba/RPM-GPG-KEY-TISSAMBA-7`
+`sha256sum /etc/pki/rpm-gpg/RPM-GPG-KEY-TISSAMBA-7
+b3cd8395e3d211a8760e95b9bc239513e9384d6c954d17515ae29c18d32a4a11  /var/www/samba/RPM-GPG-KEY-TISSAMBA-7`
 
 ### Installer les paquets Samba-AD pour CentOS : 
 
@@ -247,8 +247,7 @@ Modifier le fichier /etc/krb5.conf et remplacer tout son contenu par les 4 ligne
 Dans la ligne qui suit, vous penserez à changer à la fois le nom du
 royaume kerberos, et le nom court du domaine (nom netbios):
 
-`samba-tool domain provision --realm=MYDOMAINE.LAN --domain MYDOMAINE`
-`--server-role=dc`
+`samba-tool domain provision --realm=DOMAINE.LAN --domain DOMAINE--server-role=dc`
 
 #### Réinitialiser le mot de passe administrator : 
 
@@ -267,9 +266,8 @@ Elle doit pointer vers un serveur DNS valide, par ex. :
 
 #### Reconfigurer la résolution DNS pour la machine locale.
 
- Dans le fichier /etc/sysconfig/network-scripts/ifcfg-xxxx de
-l’interface réseau, remplacer la ligne suivante :\
-`DNS1=127.0.0.1`
+ Dans le fichier /etc/sysconfig/network-scripts/ifcfg-xxxx de l’interface réseau, remplacer la ligne suivante :
+ `DNS1=127.0.0.1`
 
  <img src="/images/samba_centos7/image17.png">
 
@@ -296,11 +294,9 @@ Relancer NetworkManager pour prendre en compte les changements
 
 #### Tester le kerberos 
 
-Taper le mot de passe du compte administrator que vous avez défini
-ci-dessus avec la commande samba-tool setpassword 
+Taper le mot de passe du compte administrator que vous avez défini ci-dessus avec la commande `samba-tool setpassword` 
 
-Si ça ne renvoie rien ou que vous obtenez un message concernant
-l’expiration du mot de passe, c’est que c’est bon):
+Si ça ne renvoie rien ou que vous obtenez un message concernant l’expiration du mot de passe, c’est que c’est bon:
 
 `kinit administrator`
  
@@ -323,37 +319,28 @@ Joindre une machine au domaine, installer RSAT
 
 #### Installer  Windows 7 
 
-Il faut installer Windows ( Windows 7), configuration réseau: static,
-même range que CentOS7. (192.168.64.10/24)
+Il faut installer Windows ( Windows 7), configuration réseau: static, même range que CentOS7. (192.168.64.10/24)
 
 #### Joindre Windows au domaine 
 
-Vous pouvez désormais joindre un poste client Windows dans votre nouveau
-domaine. Ajouter le nom de l’ordinateur et du domaine.Il faut utiliser
-l'administrateur de samba (administrator) et password.
+Vous pouvez désormais joindre un poste client Windows dans votre nouveau domaine. Ajouter le nom de l’ordinateur et du domaine.Il faut utiliser l'administrateur de Samba (administrator) et password.
 
  <img src="/images/samba_centos7/image7.png">
 
-Redémarrer Windows, après redémarrage vous pouvez entrer comme
-administrateur samba:
+Redémarrer Windows, après redémarrage vous pouvez entrer comme administrateur Samba:
 
  <img src="/images/samba_centos7/image6.png">
 
 #### Installer RSAT
 
-Pour gérer votre nouveau domaine, il faut installer les interfaces de
-management sur un poste Windows. La ligne de commande Samba est efficace
-pour de nombreuses tâches d’administration, et les interfaces graphiques
-RSAT sont un bon complément à la ligne de commande.
+Pour gérer votre nouveau domaine, il faut installer les interfaces de management sur un poste Windows. La ligne de commande Samba est efficace pour de nombreuses tâches d’administration, et les interfaces graphiques RSAT sont un bon complément à la ligne de commande.
 
 Les étapes d'installation:
 
 -   Télécharger le pack d’outils [depuis le site officiel de
     Microsoft](https://www.microsoft.com/fr-fr/download/details.aspx?id%3D7887&sa=D&ust=1597182781659000&usg=AOvVaw1fdTseuIF4KUVgIaHCZeot).
 -   Installer RSAT
--   Dans Panneau de configuration -\> Programmes et Fonctionnalités
-    Windows, cliquez sur le lien à droite de la fenêtre Activer ou
-    désactiver des fonctionnalités Windows. Vous pouvez sélectionner:
+-   Dans Panneau de configuration -\> Programmes et Fonctionnalités     Windows, cliquez sur le lien à droite de la fenêtre Activer ou     désactiver des fonctionnalités Windows. Vous pouvez sélectionner:
 
  <img src="/images/samba_centos7/image1.png">
 
@@ -361,17 +348,13 @@ Les étapes d'installation:
 
 Une fois RSAT installé à partir de MMC vous pouvez avoir accès:
 
--   créer et supprimer un enregistrement DNS à partir de la console DNS
-    Active Directory ;
--   créer et supprimer un compte utilisateur ou un compte machine à
-    partir de la console Utilisateurs et Ordinateurs Active Directory ;
+-   créer et supprimer un enregistrement DNS à partir de la console DNS     Active Directory ;
+-   créer et supprimer un compte utilisateur ou un compte machine à     partir de la console Utilisateurs et Ordinateurs Active Directory ;
 -   créer une nouvelle GPO ;
 
  <img src="/images/samba_centos7/image5.png">
 
-Super, si vous êtes parvenu jusqu’à cette étape, c’est que  tout s'est passé bien 
- et que vous avez un nouveau domaine Samba Active Directory
-opérationnel.
+Super, si vous êtes parvenu jusqu’à cette étape, c’est que  tout s'est passé bien  et que vous avez un nouveau domaine Samba Active Directory opérationnel.
 
 * * * * *
 
