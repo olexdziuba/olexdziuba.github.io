@@ -393,7 +393,7 @@ Mes sources d’inspiration:
 
 [https://www.serverlab.ca/tutorials/linux/administration-linux/how-to-configure-centos-7-network-settings/](https://www.google.com/url?q=https://www.serverlab.ca/tutorials/linux/administration-linux/how-to-configure-centos-7-network-settings/&sa=D&ust=1597182781663000&usg=AOvVaw1zHGdshJyVuwWMr8oQ08Fn)
 
-[http://www.oameri.com/installer-outils-dadministration-rsat-windows-7/\#:\~:text=En%20premier%20lieu%2C%20t%C3%A9l%C3%A9charger%20le,Next%2C%20cela%20lancera%20le%20t%C3%A9l%C3%A9chargement](https://www.google.com/url?q=http://www.oameri.com/installer-outils-dadministration-rsat-windows-7/%23:~:text%3DEn%2520premier%2520lieu%252C%2520t%25C3%25A9l%25C3%25A9charger%2520le,Next%252C%2520cela%2520lancera%2520le%2520t%25C3%25A9l%25C3%25A9chargement&sa=D&ust=1597182781664000&usg=AOvVaw3qmmMjmYBpz7h76eUCq5wE).
+[Installer les outils d’administration (RSAT) sous Windows 7](http://www.oameri.com/installer-outils-dadministration-rsat-windows-7/).
 
 [https://www.jjworld.fr/active-directory-linux-avec-samba-4/](https://www.google.com/url?q=https://www.jjworld.fr/active-directory-linux-avec-samba-4/&sa=D&ust=1597182781664000&usg=AOvVaw0IQs6JxAlflbbvX26jfMpN)
 
