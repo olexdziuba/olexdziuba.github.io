@@ -137,8 +137,7 @@ Il faut copier les fichiers dans /etc/openvpn en exécutant:
 
 *cp ca.crt server.crt server.key ta.key dh2048.pem /etc/openvpn*
 
-*gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz*
-*sudo tee /etc/openvpn/server.conf*
+*gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz* \| *sudo tee /etc/openvpn/server.conf*
 
 <img src="/images/openvpn/image15.png">
 
