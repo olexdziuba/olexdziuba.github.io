@@ -8,7 +8,7 @@ excerpt: "System administration"
 mathjax: "true"
 --- 
 
-======================================================================================
+==============================================
 
 On va faire l'installation et configuration  d'OpenVPN sur le serveur Ubuntu en 2 étapes.
 
