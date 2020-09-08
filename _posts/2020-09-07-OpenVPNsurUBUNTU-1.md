@@ -199,7 +199,7 @@ Pour activer forwarding il faut exécuter:
 
 Premièrement, on va vérifier la carte réseau de notre serveur:
 
-*ip route | grep default*
+*ip route* \| *grep default*
 
 <img src="/images/openvpn/image43.png">
 
