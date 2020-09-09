@@ -14,8 +14,7 @@ On va faire l'installation et configuration  d'OpenVPN sur le serveur Ubuntu 16.
 
 Dans le premier étape on va installer et configurer OpenVPN serveur, créer 1 client en utilisant un script et utiliser le premiere client pour se connecter à VPN sur l'ordinateur avec Windows.
 
-Dans le deuxième étape on va créer le deuxieme et le troisieme clients manuellement. Le deuxieme client on va utiliser pour connecter telephone portable a la reseau VPN et   le troisieme client on va utiliser pour connecter l'ordinateur avec Linux dans le réseau VPN en utilisant linge de commande.
-Après, parce que les 2 ordinateurs (Windows et Linux) vont être dans le même réseau virtuel on va utiliser l'ordinateur Windows pour acceder à lordinateur Linux en ssh. 
+Dans le deuxième étape on va créer le deuxième et le troisième clients manuellement. Le deuxième client on va utiliser pour connecter telephone portable a la réseau VPN et le troisième client on va utiliser pour connecter l'ordinateur avec Linux dans le réseau VPN en utilisant linge de commande. Après, parce que les 2 ordinateurs (Windows et Linux) vont être dans le même réseau virtuel on va utiliser l'ordinateur Windows pour accéder à l'ordinateur Linux en ssh. 
 
 Aujourd'hui je vais faire le première étape.
 
