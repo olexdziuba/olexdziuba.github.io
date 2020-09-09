@@ -172,6 +172,7 @@ Aussi il faut supprimer “;” pour décommenter la ligne:
 il faut supprimer “;” pour décommenter les lignes:
 
 *push "dhcp-option DNS 208.67.222.222"*
+
 *push "dhcp-option DNS 208.67.220.220"*
 
 * * * * *
