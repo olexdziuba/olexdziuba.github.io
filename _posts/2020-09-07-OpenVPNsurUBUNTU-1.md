@@ -413,3 +413,26 @@ Et voilà, on a connecté. Je mesure la vitesse d'internet avec speedtest. Le pi
 
 
 <img src="/images/openvpn/image41.png">
+
+### Mes sources d’inspiration:
+
+[OpenVPN. 2x HOW
+TO](https://www.google.com/url?q=https://openvpn.net/community-resources/how-to/&sa=D&ust=1599687501486000&usg=AOvVaw1tvLnEcclruCrzq4hQtSZM)
+
+[How To Set Up an OpenVPN Server on Ubuntu
+16.04](https://www.google.com/url?q=https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-ubuntu-16-04&sa=D&ust=1599687501487000&usg=AOvVaw24PiJIIS8cLq-KwsziTr7I)
+
+[Setting up your own Certificate Authority
+(CA)](https://www.google.com/url?q=https://openvpn.net/community-resources/setting-up-your-own-certificate-authority-ca/&sa=D&ust=1599687501487000&usg=AOvVaw1sD56dmOnytRxeBcjiuS2x)
+
+[Generate an OpenVPN profile for client user to
+import](https://www.google.com/url?q=https://serverfault.com/questions/483941/generate-an-openvpn-profile-for-client-user-to-import&sa=D&ust=1599687501488000&usg=AOvVaw1-rYo9CcEsL-6DsJ5QAFE1)
+
+[Mettre en place un client OpenVPN sur Raspberry
+Pi](https://www.google.com/url?q=https://electrotoile.eu/raspberry_client_openvpn.php&sa=D&ust=1599687501488000&usg=AOvVaw0jDRy1NvGOu0QK1vdTaMTa)
+
+VIDEO:
+
+[https://www.youtube.com/watch?v=fLJWPLSRwdg](https://www.google.com/url?q=https://www.youtube.com/watch?v%3DfLJWPLSRwdg&sa=D&ust=1599687501488000&usg=AOvVaw0AoB10PoVataDN7OijkdH8)
+
+[https://www.youtube.com/watch?v=S358miThwdg&t=36s](https://www.google.com/url?q=https://www.youtube.com/watch?v%3DS358miThwdg%26t%3D36s&sa=D&ust=1599687501489000&usg=AOvVaw0sTnmSvSZ12oMuflMPr3Lc)
