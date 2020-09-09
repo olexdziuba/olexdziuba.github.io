@@ -169,6 +169,11 @@ Aussi il faut supprimer “;” pour décommenter la ligne:
 
 <img src="/images/openvpn/image38.png">
 
+il faut supprimer “;” pour décommenter les lignes:
+
+*push "dhcp-option DNS 208.67.222.222"*
+*push "dhcp-option DNS 208.67.220.220"*
+
 * * * * *
 ### Configurer la configuration réseau de votre serveur 
 
