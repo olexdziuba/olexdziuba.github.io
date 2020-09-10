@@ -175,6 +175,7 @@ il faut supprimer “;” pour décommenter les lignes:
 
 *push "dhcp-option DNS 208.67.220.220"*
 
+Vous pouvez le modifier et utiliser CloudFlare (1.1.1.1), Google (8.8.8.8) ou tout autre serveur DNS de votre choix.
 * * * * *
 ### Configurer la configuration réseau de votre serveur 
 
