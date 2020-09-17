@@ -1,7 +1,6 @@
 ---
 title: "Installation et configuration d'un serveur OpenVPN sur UBUNTU (partie 1/2)"
 date: 2020-09-07
-tags: [OpenVPN, Ubuntu, VPN, Linux]
 header:
   image: "/images/dc.jpg"
 excerpt: "System administration"
