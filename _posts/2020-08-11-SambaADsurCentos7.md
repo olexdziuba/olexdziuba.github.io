@@ -1,7 +1,6 @@
 ---
 title: "Installation et configuration de serveur Samba-AD sur CentOS7"
 date: 2020-08-11
-tags: [Samba, CentOS, Samba-AD, Linux]
 header:
   image: "/images/dc.jpg"
 excerpt: "System administration"
