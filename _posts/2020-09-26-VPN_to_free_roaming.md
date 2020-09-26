@@ -14,7 +14,7 @@ L'utilisation de l'itinérance en voyage coûte généralement cher. Par exemple
 
 J'ai trouvé un moyen de communiquer à l'étranger presque gratuitement et de sécuriser  votre connection.
 
-Vous devez  posséder des connaissances minimales pour savoir comment vous connecter à un serveur en ssh en utilisant [Putty](https://www.putty.org/)ou
+Vous devez  posséder des connaissances minimales pour savoir comment vous connecter à un serveur en ssh en utilisant [Putty](https://www.putty.org/) ou
 l’autre client ssh et avoir un téléphone intelligent qui supporte les appels Wi-Fi. Aussi faites attention parce que cela pourrait être interdit selon la loi de votre pays :)
 
 ### Pour faire cela il faut entreprendre les étapes suivantes:
