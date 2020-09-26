@@ -1,5 +1,13 @@
-Utilisation VPN pour utiliser l'itinérance gratuite 
-===================================================
+---
+title: "Utilisation VPN pour utiliser l'itinérance gratuite "
+date: 2020-09-26
+header:
+  image: "/images/dc.jpg"
+excerpt: "System administration"
+mathjax: "true"
+--- 
+
+================================
 
 L'utilisation de l'itinérance en voyage coûte généralement cher. Par exemple, mon opérateur de téléphonie mobile propose ce service pour 10
 \$ par jour et pas pour tous les pays du monde!
@@ -9,7 +17,7 @@ J'ai trouvé un moyen de communiquer à l'étranger presque gratuitement et de s
 Vous devez  posséder des connaissances minimales pour savoir comment vous connecter à un serveur en ssh en utilisant [Putty](https://www.putty.org/)ou
 l’autre client ssh et avoir un téléphone intelligent qui supporte les appels Wi-Fi. Aussi faites attention parce que cela pourrait être interdit selon la loi de votre pays :)
 
-Pour faire cela il faut entreprendre les étapes suivantes:
+### Pour faire cela il faut entreprendre les étapes suivantes:
 
 1.  Louer  le service VPS qui se trouve physiquement dans votre pays  et     encore mieux dans votre ville où vous habitez. On peut utiliser le
     service le moins cher avec 512 Mo RAM et 1 core avec trafic illimité. Cela coûte généralement entre 1 \$ et 5 \$ par mois, selon
@@ -22,11 +30,11 @@ Pour faire cela il faut entreprendre les étapes suivantes:
 
 Sur IPhone:
 
-<img src="/images3/image01.jpg">
+<img src="/images/openvpn3/image01.jpg">
 
 Sur Android:
 
-<img src="/images3/image2.png">
+<img src="/images/openvpn3/image2.png">
 
 Avant de quitter votre pays vous pouvez activer le Mode Avion pour couper le réseau cellulaire de votre téléphone (pour tout le voyage)
  activer le  Wi-Fi. Pour appeler dans les pays étrangers, il faut vous connecter au Wi-Fi et à la connection VPN. Pour l'opérateur de
