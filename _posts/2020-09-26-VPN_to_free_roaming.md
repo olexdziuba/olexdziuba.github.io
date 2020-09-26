@@ -1,5 +1,5 @@
 ---
-title: "L'utilisation VPN pour utiliser l'itinérance gratuite "
+title: "L'utilisation de VPN pour utiliser l'itinérance gratuite "
 date: 2020-09-26
 header:
   image: "/images/dc.jpg"
