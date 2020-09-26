@@ -12,7 +12,7 @@ mathjax: "true"
 L'utilisation de l'itinérance en voyage coûte généralement cher. Par exemple, mon opérateur de téléphonie mobile propose ce service pour 10
 \$ par jour et pas pour tous les pays du monde!
 
-J'ai trouvé un moyen de communiquer à l'étranger presque gratuitement et de sécuriser  votre connection.
+J'ai trouvé un moyen de communiquer à l'étranger presque gratuitement et sécurité.
 
 Vous devez  posséder des connaissances minimales pour savoir comment vous connecter à un serveur en ssh en utilisant [Putty](https://www.putty.org/) ou
 l’autre client ssh et avoir un téléphone intelligent qui supporte les appels Wi-Fi. Aussi faites attention parce que cela pourrait être interdit selon la loi de votre pays :)
