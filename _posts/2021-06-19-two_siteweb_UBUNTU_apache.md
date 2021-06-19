@@ -15,6 +15,7 @@ Premièrement il faut  faire une mise à jour de votre système:
 *olex@ubuntu:\~\$ sudo apt update && sudo apt upgrade -y*
 
 <img src="/images/ubuntu_apache/image20.png">
+<img src="/images/pi_hole/pihole_img16.png">
 
 ### Installation d'apache
 
