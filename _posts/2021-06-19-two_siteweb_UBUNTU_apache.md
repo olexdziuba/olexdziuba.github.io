@@ -5,7 +5,7 @@ header:
 excerpt: "System administration"
 mathjax: "true"
 --- 
-
+![](/images/ubuntu_apache/apache.png)
 
 Pour l'installation je vais utiliser Ubuntu 18.04 installé sur  VMWare Workstation, carte réseau je vais configurer en mode bridge pour avoir accès à partir de MobaXterm. Pour vérifier l'accès aux sites web je vais utiliser Raspberry Pi qui est dans le même réseau.  Pour installer quelques sites sur un serveur on va configurer les virtual hosts sur Apache.
 
